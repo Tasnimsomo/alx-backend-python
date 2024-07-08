@@ -2,7 +2,7 @@
 
 """  Let's execute multiple coroutines """
 
-import async
+import asyncio
 import wait_random from ./0-basic_async_syntax
 from typing import List
 
