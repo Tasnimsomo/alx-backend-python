@@ -9,8 +9,14 @@ from typing import List
 async def wait_n(n: int, max_delay: int) -> LIST[float]:
     """ spawn wait_random n times """
     delays = []
+    tasks = []
 
     for i in range(n):
-        wait_random(max_delays) += delays
-        results = await asyncio.gather(*delays)
-        return results
+        task = wait_random(max_delay)
+        tasks.append(task)
+
+    for task in asyncio.as_completed((tasks)):
+        delay = await task
+        delays.append(delay)
+
+    return delays
